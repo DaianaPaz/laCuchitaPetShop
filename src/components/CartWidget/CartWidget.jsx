@@ -1,9 +1,9 @@
-import cart from './assets/compra.png'
+
 
 const CartWidget = () => {
     return (
         <div>
-            <img src={cart} alt="cart-widget" width="25" height="25"/>
+            <img src={process.env.PUBLIC_URL + '/assets/compra.png'} alt="cart-widget" width="25" height="25"/>
             0
         </div>
     )
