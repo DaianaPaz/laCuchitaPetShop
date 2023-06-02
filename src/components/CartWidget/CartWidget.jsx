@@ -1,11 +1,16 @@
-
+import cart from "./assets/cart.png"
+import { useContext } from "react"
+import { CartContext } from "../../context/CartContext"
+import { Link } from "react-router-dom"
 
 const CartWidget = () => {
+    const { totalQuantity } = useContext(CartContext)
+
     return (
-        <div>
-            <img src={process.env.PUBLIC_URL + '/assets/compra.png'} alt="cart-widget" width="25" height="25"/>
-            0
-        </div>
+        <Link to="./assets/cart.png" className="CartWidget" style= {{display: totalQuantity > 0 ? "block" : "none"}}>
+            <img className="CartImg" src={cart} alt="cart-widget" width="25" height="25" />
+            {totalQuantity}
+        </Link>
     )
 }
 
