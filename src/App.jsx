@@ -9,18 +9,18 @@ import Cart from "./components/Cart/Cart"
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <CartProvider>
+      <CartProvider>
+        <BrowserRouter>
           <NavBar />
-          <Routes>
-            <Route path= "/" element={<ItemListContaier greeting={"Todos nuestros productos"}/>}/>
-            <Route path= "/category/:categoryId" element={<ItemListContaier greeting={"Productos por categoria"}/>}/>
-            <Route path= "/item/:itemId" element={<ItemDetailContainer/>}/>
-            <Route path='/cart' element={<Cart />} />
-            <Route path= "*" element={<h1>404 NOT FOUND</h1>}/>
-          </Routes>
-        </CartProvider>
-      </BrowserRouter>
+            <Routes>
+              <Route path= "/" element={<ItemListContaier greeting={"Todos nuestros productos"}/>}/>
+              <Route path= "/category/:categoryId" element={<ItemListContaier greeting={"Productos por categoria"}/>}/>
+              <Route path= "/item/:itemId" element={<ItemDetailContainer/>}/>
+              <Route path='/cart' element={<Cart />} />
+              <Route path= "*" element={<h1>404 NOT FOUND</h1>}/>
+            </Routes>
+        </BrowserRouter>
+      </CartProvider>
     </div>
   );
 }
