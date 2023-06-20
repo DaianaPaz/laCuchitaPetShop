@@ -11,13 +11,13 @@ const ItemListContaier = ({greeting}) => {
     const [products, setProducts] = useState([])
     const [loading, setLoading]= useState(true)
 
-    const {categoryId}=useParams()
+    const {category}=useParams()
 
     useEffect( () => {
         setLoading(true)
 
-        const collectionRef = categoryId
-            ? query(collection(db, "products"), where("category", "==", categoryId))
+        const collectionRef = category
+            ? query(collection(db, "products"), where("category", "==", category))
             : collection(db, "products")
         
         getDocs(collectionRef)
@@ -31,7 +31,7 @@ const ItemListContaier = ({greeting}) => {
             .catch(error => {
                 console.log(error)
             })    
-    },[categoryId]  
+    },[category]  
     )
 
     return (
