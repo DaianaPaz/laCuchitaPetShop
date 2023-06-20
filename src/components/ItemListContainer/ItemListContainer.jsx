@@ -31,7 +31,7 @@ const ItemListContaier = ({greeting}) => {
             .catch(error => {
                 console.log(error)
             })    
-    }   
+    },[categoryId]  
     )
 
     return (

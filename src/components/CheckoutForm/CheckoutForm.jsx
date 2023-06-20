@@ -3,9 +3,9 @@ import { useContext } from "react"
 import { Timestamp, getDocs, query } from "firebase/firestore"
 
 const CheckoutForm = ({onConfirm}) => {
-    const {name, serName}=useSate("")
+    const {name, setName}=useSate("")
     const {phone, setPhone}=useSate("")
-    const {email, serEmail}=useSate("")
+    const {email, setEmail}=useSate("")
 
     const handleConfirm = (event) => {
         event.preventDefault()

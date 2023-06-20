@@ -6,7 +6,7 @@ import { Timestamp, getDocs, query } from "firebase/firestore"
 import CheckoutForm from "../CheckoutForm/CheckoutForm"
 import { useState } from "react"
 import CartContext from "../../context/CartContext"
-import { addDoc, collection, writeBatch } from "firebase/firestore"
+import { addDoc, collection, writeBatch, where, documentId } from "firebase/firestore"
 
 const Checkout = () => {
     const [loading, setLoading]= useState(false)
@@ -14,13 +14,13 @@ const Checkout = () => {
 
     const {cart, total, clearCart}= useContext(CartContext)
 
-    const createOrder=async({name, phone,email})=> {
+    const createOrder=async({name, phone,email, id})=> {
         setLoading(true)
 
         try{
             const objOrder = {
                 buyer: {
-                    name, phone, email
+                    name, phone, email, id
                 },
                 items: cart,
                 total: total,
@@ -47,7 +47,7 @@ const Checkout = () => {
                 const prodQuantity= productAddedToCart?.quantity
 
                 if(stockDb >= prodQuantity) {
-                    batch.update(doc.ref,{stock: stock-prodQuantity})
+                    batch.update(doc.ref,{stock: stockDb-prodQuantity})
                 }else{
                     outOfStock.push({id: doc.id, ...dataDoc})
                 }
